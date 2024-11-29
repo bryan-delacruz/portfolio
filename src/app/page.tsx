@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Github, Linkedin, Mail } from 'lucide-react'
 import { Navbar } from "@/components/navbar"
 import Link from "next/link"
 import Image from "next/image"

@@ -10,6 +10,7 @@ import Image from "next/image"
 import MetaLogo from "@/assets/icons/meta-logo.svg"
 
 import { homeConfig } from "@/configsite/home"
+import { Mail } from "lucide-react"
 
 export default function Home() {
 

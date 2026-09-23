@@ -5,6 +5,7 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-brand: var(--brand);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -45,6 +46,7 @@
 
 :root {
   --radius: 0.625rem;
+  --brand: oklch(0.55 0.15 155);
   --background: oklch(1 0 0);
   --foreground: oklch(0.147 0.004 49.25);
   --card: oklch(1 0 0);
@@ -79,7 +81,8 @@
 }
 
 .dark {
-  --background: oklch(0.147 0.004 49.25);
+  --brand: oklch(0.8 0.17 155);
+  --background: oklch(0.13 0.004 49.25);
   --foreground: oklch(0.985 0.001 106.423);
   --card: oklch(0.216 0.006 56.043);
   --card-foreground: oklch(0.985 0.001 106.423);
@@ -116,7 +119,13 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--brand) 35%, transparent);
   }
 }

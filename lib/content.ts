@@ -233,7 +233,7 @@ export const moreProjects: MiniProject[] = [
       en: "Personal finance with Google login, real-time balance and income and expense CRUD.",
     },
     stack: ["Next.js", "Prisma", "Better Auth"],
-    demo: "https://stash-app-mauve.vercel.app",
+    demo: "https://stash-app-bdlc.vercel.app",
   },
   {
     name: "Goz Bank",

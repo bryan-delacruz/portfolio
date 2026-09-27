@@ -195,12 +195,12 @@ export const featuredProjects: Project[] = [
   },
   {
     name: "Rent Platform",
-    tagline: { es: "SaaS de gestión de alquileres", en: "Property management SaaS" },
+    tagline: { es: "Gestión de alquileres (en desarrollo)", en: "Rental management (in progress)" },
     description: {
-      es: "Plataforma para propietarios e inquilinos construida sobre un design system propio en Storybook, con componentes accesibles sobre Radix UI y tests con Vitest y Playwright.",
-      en: "Platform for landlords and tenants built on its own Storybook design system, with accessible Radix UI components and tests with Vitest and Playwright.",
+      es: "MVP para propietarios e inquilinos: propiedades, contratos y pagos con recibos en PDF, sobre un UI kit con componentes Radix UI documentados en Storybook.",
+      en: "MVP for landlords and tenants: properties, leases, and payments with PDF receipts, built on a UI kit of Radix UI components documented in Storybook.",
     },
-    stack: ["Next.js 16", "Prisma", "Neon Postgres", "Storybook", "Vitest"],
+    stack: ["Next.js 16", "Prisma", "Neon Postgres", "Radix UI", "Storybook"],
     year: 2026,
   },
   {
@@ -302,6 +302,6 @@ export const skills: { group: Localized; items: string[] }[] = [
   },
   {
     group: { es: "Calidad y flujo", en: "Quality & workflow" },
-    items: ["Storybook", "Vitest", "Jest", "Playwright", "Git", "Vercel", "AI agents · SDD"],
+    items: ["Playwright", "Storybook", "Git", "CI/CD", "Vercel", "AI agents · SDD"],
   },
 ];

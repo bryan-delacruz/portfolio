@@ -229,15 +229,6 @@ export type MiniProject = {
 
 export const moreProjects: MiniProject[] = [
   {
-    name: "Stash App",
-    description: {
-      es: "Finanzas personales con login de Google, balance en tiempo real y CRUD de ingresos y gastos.",
-      en: "Personal finance with Google login, real-time balance and income and expense CRUD.",
-    },
-    stack: ["Next.js", "Prisma", "Better Auth"],
-    demo: "https://stash-app-bdlc.vercel.app",
-  },
-  {
     name: "Goz Bank",
     description: {
       es: "Billetera digital con pagos por código QR.",

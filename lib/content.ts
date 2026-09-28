@@ -143,6 +143,18 @@ export type Project = {
 
 export const featuredProjects: Project[] = [
   {
+    name: "Rent Platform",
+    tagline: { es: "Gestión de alquileres para propietarios", en: "Rental management for landlords" },
+    description: {
+      es: "Contratos, cobros mensuales automáticos, pagos parciales, recibos PDF y recordatorios por WhatsApp, en español e inglés. Login con Clerk con datos aislados por propietario, lógica de cobros con tests unitarios y 13 tests E2E con Playwright en CI. Demo con un clic.",
+      en: "Leases, automatic monthly charges, partial payments, PDF receipts and WhatsApp reminders, in English and Spanish. Clerk sign-in with data isolated per landlord, unit-tested billing logic and 13 Playwright E2E tests in CI. One-click demo.",
+    },
+    stack: ["Next.js 16", "TypeScript", "Clerk", "Prisma", "Neon Postgres", "Zod", "Playwright", "Vitest"],
+    demo: "https://rent-platform-bdlc.vercel.app",
+    repo: "https://github.com/bryan-delacruz/rent-platform",
+    year: 2026,
+  },
+  {
     name: "Bernie Wallet",
     tagline: { es: "Tus gastos se anotan solos", en: "Your expenses log themselves" },
     description: {
@@ -192,16 +204,6 @@ export const featuredProjects: Project[] = [
     demo: "https://teslo-shop-bdlc.vercel.app/",
     repo: "https://github.com/bryan-delacruz/next-teslo-shop",
     year: 2025,
-  },
-  {
-    name: "Rent Platform",
-    tagline: { es: "Gestión de alquileres (en desarrollo)", en: "Rental management (in progress)" },
-    description: {
-      es: "MVP para propietarios e inquilinos: propiedades, contratos y pagos con recibos en PDF, sobre un UI kit con componentes Radix UI documentados en Storybook.",
-      en: "MVP for landlords and tenants: properties, leases, and payments with PDF receipts, built on a UI kit of Radix UI components documented in Storybook.",
-    },
-    stack: ["Next.js 16", "Prisma", "Neon Postgres", "Radix UI", "Storybook"],
-    year: 2026,
   },
   {
     name: "Spotify Clone",

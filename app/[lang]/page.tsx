@@ -117,6 +117,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             ))}
           </ol>
           <p className="mt-12 font-mono text-xs text-muted-foreground">{profile.education[lang]}</p>
+          <p className="mt-2 font-mono text-xs text-muted-foreground">{profile.certifications[lang]}</p>
         </Section>
 
         {/* Projects */}

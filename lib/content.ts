@@ -10,6 +10,10 @@ export const profile = {
     es: "Ingeniería Mecatrónica · Pontificia Universidad Católica del Perú",
     en: "B.S. Mechatronics Engineering · Pontificia Universidad Católica del Perú",
   } satisfies Localized,
+  certifications: {
+    es: "Certificaciones: Claude Code 101, Agent Skills y Subagents (Anthropic) · Advanced React (Meta) · Next.js y SOLID (DevTalles) · Scrum Foundation (CertiProf)",
+    en: "Certifications: Claude Code 101, Agent Skills and Subagents (Anthropic) · Advanced React (Meta) · Next.js and SOLID (DevTalles) · Scrum Foundation (CertiProf)",
+  } satisfies Localized,
 };
 
 export type Job = {
@@ -45,8 +49,16 @@ export const experience: Job[] = [
         en: "Shipped features and maintenance on 27 B2C and B2B storefronts for 20+ brands: Reebok, ASICS, Carter's, Herman Miller, Victoria's Secret Beauty, Bath & Body Works, Coca-Cola and American Eagle.",
       },
       {
-        es: "Construí más de 30 custom apps en VTEX IO y FastStore: componentes React, apps de administración con backend Node.js, integraciones REST y GraphQL, Master Data y hooks de VTEX.",
-        en: "Built 30+ custom apps on VTEX IO and FastStore: React components, admin apps with Node.js backends, REST and GraphQL integrations, Master Data and VTEX hooks.",
+        es: "Optimizo la PDP de Timex Brasil para Core Web Vitals: imagen LCP priorizada, lazy loading, imágenes responsivas, code splitting con next/dynamic y espacio reservado para evitar CLS.",
+        en: "Optimize the Timex Brazil PDP for Core Web Vitals: prioritized LCP image, lazy loading, responsive images, code splitting with next/dynamic and reserved space to prevent CLS.",
+      },
+      {
+        es: "Construí un servicio backend en Node.js sobre VTEX IO para consulta de inventario y formularios en Master Data, con validación de origen y autenticación por API key/token.",
+        en: "Built a Node.js backend service on VTEX IO for inventory lookup and Master Data forms, with origin validation and API key/token authentication.",
+      },
+      {
+        es: "Construí más de 30 custom apps en VTEX IO y FastStore en todo el stack: componentes React/TypeScript, apps del admin de VTEX, servicios Node.js, integraciones REST y GraphQL, Master Data y hooks nativos.",
+        en: "Built 30+ custom apps on VTEX IO and FastStore across the stack: React/TypeScript components, VTEX Admin apps, Node.js services, REST and GraphQL integrations, Master Data and native hooks.",
       },
       {
         es: "Desarrollé Mondo Sound desde cero para Argentina, Chile y México, con la mayor parte de la responsabilidad técnica y una arquitectura adaptada a cada mercado.",
@@ -61,11 +73,11 @@ export const experience: Job[] = [
         en: "Work with agentic engineering and Spec-Driven Development: I orchestrate AI agents from spec to tests and code review, cutting development time by at least 50%.",
       },
     ],
-    stack: ["Next.js", "React", "TypeScript", "GraphQL", "Node.js", "VTEX IO", "FastStore"],
+    stack: ["Next.js", "React", "TypeScript", "GraphQL", "Node.js", "VTEX IO", "FastStore", "Playwright"],
   },
   {
     company: "Izipay",
-    role: { es: "Analista Programador", en: "Software Engineer (Analyst Programmer)" },
+    role: { es: "Analista Programador | Software Engineer", en: "Programmer Analyst | Software Engineer" },
     start: "2022-07",
     end: "2023-05",
     mode: { es: "Híbrido · Lima", en: "Hybrid · Lima" },
@@ -146,8 +158,8 @@ export const featuredProjects: Project[] = [
     name: "Rent Platform",
     tagline: { es: "Gestión de alquileres para propietarios", en: "Rental management for landlords" },
     description: {
-      es: "Contratos, cobros mensuales automáticos, pagos parciales, recibos PDF y recordatorios por WhatsApp, en español e inglés. Login con Clerk con datos aislados por propietario, lógica de cobros con tests unitarios y 13 tests E2E con Playwright en CI. Demo con un clic.",
-      en: "Leases, automatic monthly charges, partial payments, PDF receipts and WhatsApp reminders, in English and Spanish. Clerk sign-in with data isolated per landlord, unit-tested billing logic and 13 Playwright E2E tests in CI. One-click demo.",
+      es: "Contratos, cobros mensuales automáticos, pagos parciales, recibos PDF y recordatorios por WhatsApp, en español e inglés. Login con Clerk con datos aislados por propietario, 55 tests unitarios y 13 E2E con Playwright en CI. Demo con un clic.",
+      en: "Leases, automatic monthly charges, partial payments, PDF receipts and WhatsApp reminders, in English and Spanish. Clerk sign-in with data isolated per landlord, 55 unit tests and 13 Playwright E2E tests in CI. One-click demo.",
     },
     stack: ["Next.js 16", "TypeScript", "Clerk", "Prisma", "Neon Postgres", "Zod", "Playwright", "Vitest"],
     demo: "https://rent-platform-bdlc.vercel.app",
@@ -158,11 +170,12 @@ export const featuredProjects: Project[] = [
     name: "Bernie Wallet",
     tagline: { es: "Tus gastos se anotan solos", en: "Your expenses log themselves" },
     description: {
-      es: "Lee los correos de tu banco con acceso de solo lectura a Gmail, reconoce cada consumo y lo organiza por categoría. Tokens OAuth cifrados, sincronización automática y PWA instalable.",
-      en: "Reads your bank's emails through read-only Gmail access, recognizes each purchase and organizes it by category. Encrypted OAuth tokens, automatic sync and an installable PWA.",
+      es: "Lee los correos de tu banco con acceso de solo lectura a Gmail, reconoce cada consumo y lo organiza por categoría. Sincronización con backoff y circuit breaker, tokens cifrados con AES-256-GCM y Row Level Security en Postgres. PWA instalable y demo con un clic.",
+      en: "Reads your bank's emails through read-only Gmail access, recognizes each purchase and organizes it by category. Sync with backoff and a circuit breaker, AES-256-GCM encrypted tokens and Postgres Row Level Security. Installable PWA and one-click demo.",
     },
-    stack: ["Next.js 16", "Supabase", "Gmail API", "Recharts", "shadcn/ui"],
+    stack: ["Next.js 16", "React 19", "Supabase", "Gmail API", "Recharts", "shadcn/ui"],
     demo: "https://bernie-wallet.vercel.app",
+    repo: "https://github.com/bryan-delacruz/bernie-wallet",
     year: 2026,
   },
   {
@@ -172,11 +185,12 @@ export const featuredProjects: Project[] = [
       en: "Your civil wedding in one place",
     },
     description: {
-      es: "Organiza trámites, pendientes, compras y gastos del matrimonio civil junto a tu pareja. Espacio compartido, tableros con drag and drop y autenticación con Clerk.",
-      en: "Plan the paperwork, to-dos, purchases and budget of a civil wedding with your partner. Shared workspace, drag-and-drop boards and Clerk authentication.",
+      es: "Organiza trámites, pendientes, compras y gastos del matrimonio civil junto a tu pareja. Tablero drag and drop accesible y multi-tenancy con Clerk Organizations. Demo con un clic.",
+      en: "Plan the paperwork, to-dos, purchases and budget of a civil wedding with your partner. Accessible drag-and-drop board and multi-tenancy with Clerk Organizations. One-click demo.",
     },
     stack: ["Next.js 16", "Clerk", "Neon Postgres", "Drizzle ORM", "dnd-kit"],
     demo: "https://casorio-club.vercel.app",
+    repo: "https://github.com/bryan-delacruz/casorio-club",
     year: 2026,
   },
   {
@@ -193,30 +207,6 @@ export const featuredProjects: Project[] = [
     demo: "https://the-coffee-simulator.vercel.app",
     year: 2026,
   },
-  {
-    name: "Teslo Shop",
-    tagline: { es: "Ecommerce full stack", en: "Full stack ecommerce" },
-    description: {
-      es: "Tienda inspirada en Tesla Shop: catálogo con filtros, carrito, checkout con PayPal, panel de administración de productos, órdenes y usuarios, y subida de imágenes a Cloudinary.",
-      en: "Store inspired by the Tesla Shop: filtered catalog, cart, PayPal checkout, admin panel for products, orders and users, and image uploads to Cloudinary.",
-    },
-    stack: ["Next.js", "Prisma", "PostgreSQL", "NextAuth", "Zustand", "PayPal"],
-    demo: "https://teslo-shop-bdlc.vercel.app/",
-    repo: "https://github.com/bryan-delacruz/next-teslo-shop",
-    year: 2025,
-  },
-  {
-    name: "Spotify Clone",
-    tagline: { es: "Streaming de música full stack", en: "Full stack music streaming" },
-    description: {
-      es: "Subida de canciones y portadas, reproductor propio, canciones favoritas, login con GitHub y suscripción premium con Stripe.",
-      en: "Song and cover uploads, custom audio player, liked songs, GitHub login and a premium subscription with Stripe.",
-    },
-    stack: ["Next.js", "Supabase", "Stripe", "Zustand", "Radix UI"],
-    demo: "https://spotify-app-bdlc.vercel.app/",
-    repo: "https://github.com/bryan-delacruz/next-spotify-app",
-    year: 2025,
-  },
 ];
 
 export type MiniProject = {
@@ -228,6 +218,26 @@ export type MiniProject = {
 };
 
 export const moreProjects: MiniProject[] = [
+  {
+    name: "Teslo Shop",
+    description: {
+      es: "Ecommerce full stack (curso de DevTalles): catálogo con filtros, carrito, checkout con PayPal y panel de administración.",
+      en: "Full stack ecommerce (DevTalles course): filtered catalog, cart, PayPal checkout and admin panel.",
+    },
+    stack: ["Next.js", "Prisma", "PostgreSQL", "PayPal"],
+    demo: "https://teslo-shop-bdlc.vercel.app/",
+    repo: "https://github.com/bryan-delacruz/next-teslo-shop",
+  },
+  {
+    name: "Spotify Clone",
+    description: {
+      es: "Streaming de música con reproductor propio, favoritos, subida de canciones y suscripción Premium con Stripe.",
+      en: "Music streaming with a custom player, liked songs, uploads and a Stripe Premium subscription.",
+    },
+    stack: ["Next.js", "Supabase", "Stripe"],
+    demo: "https://spotify-app-bdlc.vercel.app/",
+    repo: "https://github.com/bryan-delacruz/next-spotify-app",
+  },
   {
     name: "Goz Bank",
     description: {
@@ -295,6 +305,10 @@ export const skills: { group: Localized; items: string[] }[] = [
   },
   {
     group: { es: "Calidad y flujo", en: "Quality & workflow" },
-    items: ["Playwright", "Storybook", "Git", "CI/CD", "Vercel", "AI agents · SDD"],
+    items: ["Playwright", "Vitest", "Storybook", "Git", "CI/CD", "Vercel"],
+  },
+  {
+    group: { es: "IA", en: "AI" },
+    items: ["Claude Code", "MCP", "Skills", "Subagents", "Spec-Driven Development"],
   },
 ];

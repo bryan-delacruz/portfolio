@@ -12,9 +12,22 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/bryan-delacruza/",
   github: "https://github.com/bryan-delacruz",
   education: {
-    es: "Ingeniería Mecatrónica · Pontificia Universidad Católica del Perú",
-    en: "B.S. Mechatronics Engineering · Pontificia Universidad Católica del Perú",
-  } satisfies Localized,
+    degree: {
+      es: "Bachiller en Ciencias con mención en Ingeniería Mecatrónica",
+      en: "B.S. in Science, Mechatronics Engineering",
+    } satisfies Localized,
+    school: "Pontificia Universidad Católica del Perú",
+    location: { es: "Lima, Perú", en: "Lima, Peru" } satisfies Localized,
+    years: "2014 – 2019",
+    ranking: {
+      source: "https://puntoedu.pucp.edu.pe/orgullo-pucp/ranking-qs-mundial-2027-pucp-es-1-en-peru-y-10-latinoamerica/",
+      stats: [
+        { value: "#1", label: { es: "en Perú", en: "in Peru" } satisfies Localized },
+        { value: "#10", label: { es: "en Latinoamérica", en: "in Latin America" } satisfies Localized },
+        { value: "#357", label: { es: "mundial · top 24%", en: "worldwide · top 24%" } satisfies Localized },
+      ],
+    },
+  },
   certifications: {
     es: "Certificaciones: Claude Code 101, Agent Skills y Subagents (Anthropic) · Advanced React (Meta) · Next.js y SOLID (DevTalles) · Scrum Foundation (CertiProf)",
     en: "Certifications: Claude Code 101, Agent Skills and Subagents (Anthropic) · Advanced React (Meta) · Next.js and SOLID (DevTalles) · Scrum Foundation (CertiProf)",

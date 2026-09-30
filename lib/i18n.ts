@@ -16,7 +16,7 @@ export type Localized = Record<Locale, string>;
 
 export const ui = {
   es: {
-    nav: { experience: "Experiencia", projects: "Proyectos", skills: "Stack", contact: "Contacto" },
+    nav: { experience: "Experiencia", projects: "Proyectos", skills: "Stack", education: "Educación", contact: "Contacto" },
     role: "Software Engineer · Full Stack · AI-Native",
     portfolio: "Portafolio",
     available: "Remoto · UTC-5 · Inglés fluido",
@@ -42,6 +42,8 @@ export const ui = {
     code: "Código",
     privateCode: "Código privado",
     skillsTitle: "Stack",
+    educationTitle: "Educación",
+    rankingCaption: "PUCP en el QS World University Rankings 2027",
     contactTitle: "Hablemos",
     copyEmail: "Copiar",
     copiedEmail: "¡Copiado!",
@@ -52,7 +54,7 @@ export const ui = {
     toggleTheme: "Cambiar tema",
   },
   en: {
-    nav: { experience: "Experience", projects: "Projects", skills: "Stack", contact: "Contact" },
+    nav: { experience: "Experience", projects: "Projects", skills: "Stack", education: "Education", contact: "Contact" },
     role: "Software Engineer · Full Stack · AI-Native",
     portfolio: "Portfolio",
     available: "Remote · UTC-5 · Fluent English",
@@ -78,6 +80,8 @@ export const ui = {
     code: "Code",
     privateCode: "Private code",
     skillsTitle: "Stack",
+    educationTitle: "Education",
+    rankingCaption: "PUCP in the QS World University Rankings 2027",
     contactTitle: "Let's talk",
     copyEmail: "Copy",
     copiedEmail: "Copied!",

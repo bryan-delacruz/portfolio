@@ -7,7 +7,9 @@ export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname === "/") {
     return NextResponse.rewrite(new URL(`/${defaultLocale}`, request.url));
   }
-  return NextResponse.redirect(new URL("/", request.url), 308);
+  const url = request.nextUrl.clone();
+  url.pathname = "/";
+  return NextResponse.redirect(url, 308);
 }
 
 export const config = { matcher: ["/", "/en"] };

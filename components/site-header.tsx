@@ -1,20 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
-import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
-import type { Locale, UI } from "@/lib/i18n";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { localePath, type Locale, type UI } from "@/lib/i18n";
 
 export function SiteHeader({ lang, t }: { lang: Locale; t: UI }) {
-  const { resolvedTheme, setTheme } = useTheme();
-  // false during SSR and hydration, true afterwards: the theme is only known in the browser.
-  const mounted = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-
   const other: Locale = lang === "es" ? "en" : "es";
   const links = [
     { href: "#experience", label: t.nav.experience },
@@ -26,7 +14,7 @@ export function SiteHeader({ lang, t }: { lang: Locale; t: UI }) {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href={`/${lang}`} className="font-mono text-sm font-semibold tracking-tight">
+        <Link href={localePath(lang)} className="font-mono text-sm font-semibold tracking-tight">
           bryandelacruz<span className="text-brand">.</span>dev
         </Link>
 
@@ -40,21 +28,14 @@ export function SiteHeader({ lang, t }: { lang: Locale; t: UI }) {
 
         <div className="flex items-center gap-1">
           <Link
-            href={`/${other}`}
+            href={localePath(other)}
             hrefLang={other}
             className="rounded-md px-2.5 py-1.5 font-mono text-xs uppercase text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             aria-label={t.switchLang}
           >
             {other}
           </Link>
-          <button
-            type="button"
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="grid size-8 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-            aria-label={t.toggleTheme}
-          >
-            {mounted && resolvedTheme === "light" ? <Moon className="size-4" /> : <Sun className="size-4" />}
-          </button>
+          <ThemeToggle label={t.toggleTheme} />
         </div>
       </div>
     </header>

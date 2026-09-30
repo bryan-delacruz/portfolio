@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { isLocale, locales } from "@/lib/i18n";
+import { isLocale, localePath, locales, ui } from "@/lib/i18n";
 import { profile } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 const descriptions = {
-  es: "Software Engineer full stack en Lima. React, Next.js, TypeScript y Node.js. Ecommerce para marcas globales en 7 países de LATAM.",
-  en: "Full stack Software Engineer in Lima. React, Next.js, TypeScript and Node.js. Ecommerce for global brands across 7 LATAM countries.",
+  en: `Portfolio of ${profile.name}, ${ui.en.role}. I ship production web apps end to end with React, Next.js, TypeScript, Node.js and AI agents.`,
+  es: `Portafolio de ${profile.name}, ${ui.es.role}. Construyo apps web de producción de punta a punta con React, Next.js, TypeScript, Node.js y agentes de IA.`,
 };
 
 export function generateStaticParams() {
@@ -34,21 +34,33 @@ export async function generateMetadata({
   const { lang } = await params;
   if (!isLocale(lang)) return {};
 
-  const title = `${profile.name} — Software Engineer`;
+  const title = `${profile.name} — ${ui[lang].role}`;
   return {
     metadataBase: new URL(SITE_URL),
     title,
     description: descriptions[lang],
+    applicationName: profile.name,
+    authors: [{ name: profile.name, url: SITE_URL }],
+    creator: profile.name,
     alternates: {
-      canonical: `/${lang}`,
-      languages: { es: "/es", en: "/en" },
+      canonical: localePath(lang),
+      languages: { en: localePath("en"), es: localePath("es"), "x-default": "/" },
     },
     openGraph: {
       title,
       description: descriptions[lang],
-      url: `/${lang}`,
+      url: localePath(lang),
+      siteName: `${profile.name} · ${ui[lang].portfolio}`,
       locale: lang === "es" ? "es_PE" : "en_US",
-      type: "website",
+      alternateLocale: lang === "es" ? "en_US" : "es_PE",
+      type: "profile",
+      firstName: profile.givenName,
+      lastName: profile.familyName,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: descriptions[lang],
     },
   };
 }
@@ -66,7 +78,7 @@ export default async function LangLayout({
   return (
     <html lang={lang} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>

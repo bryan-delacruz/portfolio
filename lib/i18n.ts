@@ -1,9 +1,14 @@
-export const locales = ["es", "en"] as const;
+export const locales = ["en", "es"] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "es";
+export const defaultLocale: Locale = "en";
 
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
+}
+
+/** Ruta pública de cada idioma: el idioma por defecto vive en la raíz (/), el resto en /{lang}. */
+export function localePath(lang: Locale): string {
+  return lang === defaultLocale ? "/" : `/${lang}`;
 }
 
 /** Texto bilingüe: cada campo traducible lleva su versión en ambos idiomas. */
@@ -13,19 +18,21 @@ export const ui = {
   es: {
     nav: { experience: "Experiencia", projects: "Proyectos", skills: "Stack", contact: "Contacto" },
     role: "Software Engineer · Full Stack · AI-Native",
-    available: "Abierto a nuevas oportunidades · remoto o híbrido",
+    portfolio: "Portafolio",
+    available: "Remoto · UTC-5 · Inglés fluido",
+    headline: { lead: "Construyo apps web de producción,", tail: "de punta a punta." },
+    stackLine: { base: "React · Next.js · TypeScript · Node.js", ai: "+ agentes de IA · Spec-Driven Development" },
     intro:
-      "Construyo aplicaciones web en producción con React, Next.js, TypeScript y Node.js, con IA integrada en mi forma de trabajar. Llevo más de 4 años desarrollando software, la mayor parte en ecommerce para marcas globales en 7 países de LATAM, y en paralelo lanzo productos propios de punta a punta.",
+      "Software Engineer full stack con más de 4 años desarrollando software. Construyo aplicaciones web en producción con React, Next.js, TypeScript y Node.js, y trabajo con agentes de IA y Spec-Driven Development desde la especificación hasta la validación. Mi trabajo actual llega a marcas globales en 7 países de LATAM, y en paralelo lanzo productos propios de punta a punta.",
     ctaProjects: "Ver proyectos",
     ctaContact: "Contactar",
     stats: [
       { value: "4+", label: "años desarrollando software" },
-      { value: "27", label: "storefronts B2C y B2B" },
-      { value: "30+", label: "custom apps en VTEX IO y FastStore" },
-      { value: "7", label: "países de LATAM" },
+      { value: "7", label: "países de LATAM atendidos" },
+      { value: "50%", label: "entregas más rápidas con IA" },
     ],
     experienceTitle: "Experiencia",
-    experienceLead: "Del QA y los pagos al ecommerce a escala.",
+    experienceLead: "Del QA y los pagos a apps web de producción a escala.",
     present: "Actualidad",
     projectsTitle: "Proyectos",
     projectsLead:
@@ -45,19 +52,21 @@ export const ui = {
   en: {
     nav: { experience: "Experience", projects: "Projects", skills: "Stack", contact: "Contact" },
     role: "Software Engineer · Full Stack · AI-Native",
-    available: "Open to new opportunities · remote or hybrid",
+    portfolio: "Portfolio",
+    available: "Remote · UTC-5 · Fluent English",
+    headline: { lead: "I ship production web apps,", tail: "end to end." },
+    stackLine: { base: "React · Next.js · TypeScript · Node.js", ai: "+ AI agents · Spec-Driven Development" },
     intro:
-      "I build production web applications with React, Next.js, TypeScript and Node.js, with AI built into the way I work. I have 4+ years in software development, mostly shipping ecommerce for global brands across 7 LATAM countries, and I launch my own products end to end on the side.",
+      "Full stack Software Engineer with 4+ years in software development. I build production web applications with React, Next.js, TypeScript and Node.js, working with AI agents and Spec-Driven Development from specification to validation. My current work reaches global brands across 7 LATAM countries, and I launch my own products end to end on the side.",
     ctaProjects: "See projects",
     ctaContact: "Get in touch",
     stats: [
-      { value: "4+", label: "years in software development" },
-      { value: "27", label: "B2C and B2B storefronts" },
-      { value: "30+", label: "custom apps on VTEX IO and FastStore" },
-      { value: "7", label: "LATAM countries" },
+      { value: "4+", label: "years in software dev" },
+      { value: "7", label: "LATAM countries served" },
+      { value: "50%", label: "faster delivery with AI" },
     ],
     experienceTitle: "Experience",
-    experienceLead: "From QA and payments to ecommerce at scale.",
+    experienceLead: "From QA and payments to production web apps at scale.",
     present: "Present",
     projectsTitle: "Projects",
     projectsLead:

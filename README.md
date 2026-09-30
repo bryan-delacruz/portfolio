@@ -1,4 +1,4 @@
-# Portfolio | Bryan De La Cruz · Software Engineer
+# Portfolio | Bryan De La Cruz Amar · Software Engineer
 
 ![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
@@ -12,8 +12,8 @@ My personal portfolio: experience, featured projects and stack. Bilingual (Spani
 
 ## Features
 
-- **Bilingual routing** with a `[lang]` dynamic segment (`/es`, `/en`), statically generated for each locale.
-- **Automatic language detection:** middleware reads the `Accept-Language` header and redirects `/` to the best matching locale.
+- **Bilingual routing** with a `[lang]` dynamic segment, statically generated for each locale. English is the default and lives at the root (`/`); Spanish lives at `/es`.
+- **Root-level default locale:** the proxy rewrites `/` to the English page without changing the URL and redirects `/en` to `/` (308), so each language has a single canonical URL.
 - **Typed content layer:** experience, projects and skills live in `lib/content.ts`. Every translatable field is a `Localized` record, so a missing translation is a type error.
 - **Light / dark theme** with `next-themes`, without hydration flicker.
 - **Responsive layout** built with Tailwind CSS v4 and `lucide-react` icons.
@@ -45,7 +45,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). You are redirected to `/es` or `/en` based on your browser language.
+Open [http://localhost:3000](http://localhost:3000) for the English version or [http://localhost:3000/es](http://localhost:3000/es) for Spanish.
 
 ## Contact
 

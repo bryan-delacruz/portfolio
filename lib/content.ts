@@ -1,7 +1,12 @@
 import type { Localized } from "./i18n";
 
 export const profile = {
-  name: "Bryan De La Cruz",
+  name: "Bryan De La Cruz Amar",
+  /** Forma corta con la que también me buscan; va como alternateName en el JSON-LD. */
+  shortName: "Bryan De La Cruz",
+  givenName: "Bryan",
+  familyName: "De La Cruz Amar",
+  jobTitle: "Software Engineer",
   location: "Lima, Perú",
   email: "bryan.delacruza@gmail.com",
   linkedin: "https://www.linkedin.com/in/bryan-delacruza/",

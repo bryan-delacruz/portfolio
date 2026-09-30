@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Lock, Mail, MapPin } from "lucide-react";
+import { CopyEmailButton } from "@/components/copy-email-button";
 import { SiteHeader } from "@/components/site-header";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { isLocale, ui, type Locale } from "@/lib/i18n";
@@ -180,8 +181,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               </li>
             ))}
           </ol>
-          <p className="mt-12 font-mono text-xs text-muted-foreground">{profile.education[lang]}</p>
-          <p className="mt-2 font-mono text-xs text-muted-foreground">{profile.certifications[lang]}</p>
         </Section>
 
         {/* Projects */}
@@ -227,8 +226,42 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           </div>
         </Section>
 
+        {/* Education */}
+        <Section id="education" index="04" title={t.educationTitle}>
+          <div className="grid gap-4 sm:grid-cols-[180px_1fr] sm:gap-8">
+            <p className="font-mono text-xs uppercase tracking-wide text-muted-foreground sm:pt-1">
+              {profile.education.years}
+            </p>
+            <div>
+              <h3 className="text-lg font-medium text-pretty">{profile.education.degree[lang]}</h3>
+              <p className="mt-1 text-muted-foreground">
+                {profile.education.school} · {profile.education.location[lang]}
+              </p>
+
+              <dl className="mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-border bg-border">
+                {profile.education.ranking.stats.map((stat) => (
+                  <div key={stat.value} className="bg-background p-4 sm:p-5">
+                    <dt className="sr-only">{stat.label[lang]}</dt>
+                    <dd>
+                      <span className="block text-2xl font-semibold tracking-tight sm:text-3xl">{stat.value}</span>
+                      <span className="mt-1 block text-xs text-muted-foreground sm:text-sm">{stat.label[lang]}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 font-mono text-xs">
+                <TextLink href={profile.education.ranking.source}>{t.rankingCaption}</TextLink>
+              </p>
+
+              <p className="mt-8 font-mono text-xs leading-relaxed text-muted-foreground">
+                {profile.certifications[lang]}
+              </p>
+            </div>
+          </div>
+        </Section>
+
         {/* Contact */}
-        <Section id="contact" index="04" title={t.contactTitle} lead={t.contactLead}>
+        <Section id="contact" index="05" title={t.contactTitle} lead={t.contactLead}>
           <div className="flex flex-wrap gap-3">
             <a
               href={`mailto:${profile.email}`}
@@ -237,6 +270,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               <Mail className="size-4" />
               {profile.email}
             </a>
+            <CopyEmailButton email={profile.email} label={t.copyEmail} copiedLabel={t.copiedEmail} />
             <a
               href={profile.linkedin}
               target="_blank"

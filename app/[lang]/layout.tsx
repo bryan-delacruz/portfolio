@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { isLocale, locales } from "@/lib/i18n";
 import { profile } from "@/lib/content";
+import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -15,8 +16,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-const SITE_URL = "https://portfolio-bdlc.vercel.app";
 
 const descriptions = {
   es: "Software Engineer full stack en Lima. React, Next.js, TypeScript y Node.js. Ecommerce para marcas globales en 7 países de LATAM.",

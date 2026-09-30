@@ -27,7 +27,7 @@ export function SiteHeader({ lang, t }: { lang: Locale; t: UI }) {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href={`/${lang}`} className="font-mono text-sm font-semibold tracking-tight">
-          bdlc<span className="text-brand">.</span>dev
+          bryandelacruz<span className="text-brand">.</span>dev
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">

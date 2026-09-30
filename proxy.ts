@@ -1,14 +1,13 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, locales } from "@/lib/i18n";
+import { defaultLocale } from "@/lib/i18n";
 
+// El inglés vive en la raíz: / muestra /en sin cambiar la URL y /en redirige a / para no duplicar contenido.
+// El español queda en /es, accesible desde el selector del header.
 export function proxy(request: NextRequest) {
-  const accept = request.headers.get("accept-language") ?? "";
-  const preferred = accept
-    .split(",")
-    .map((part) => part.split(";")[0].trim().slice(0, 2).toLowerCase())
-    .find((code) => (locales as readonly string[]).includes(code));
-
-  return NextResponse.redirect(new URL(`/${preferred ?? defaultLocale}`, request.url));
+  if (request.nextUrl.pathname === "/") {
+    return NextResponse.rewrite(new URL(`/${defaultLocale}`, request.url));
+  }
+  return NextResponse.redirect(new URL("/", request.url), 308);
 }
 
-export const config = { matcher: "/" };
+export const config = { matcher: ["/", "/en"] };

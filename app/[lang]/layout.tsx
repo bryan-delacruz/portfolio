@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { isLocale, locales, ui } from "@/lib/i18n";
+import { isLocale, localePath, locales, ui } from "@/lib/i18n";
 import { profile } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 const descriptions = {
-  es: `Portafolio de ${profile.name}, ${ui.es.role} en Lima. React, Next.js, TypeScript y Node.js. Ecommerce en 7 países de LATAM.`,
-  en: `Portfolio of ${profile.name}, ${ui.en.role} in Lima. React, Next.js, TypeScript and Node.js. Ecommerce across 7 LATAM countries.`,
+  en: `Portfolio of ${profile.name}, ${ui.en.role}. I ship production web apps end to end with React, Next.js, TypeScript, Node.js and AI agents.`,
+  es: `Portafolio de ${profile.name}, ${ui.es.role}. Construyo apps web de producción de punta a punta con React, Next.js, TypeScript, Node.js y agentes de IA.`,
 };
 
 export function generateStaticParams() {
@@ -43,13 +43,13 @@ export async function generateMetadata({
     authors: [{ name: profile.name, url: SITE_URL }],
     creator: profile.name,
     alternates: {
-      canonical: `/${lang}`,
-      languages: { es: "/es", en: "/en" },
+      canonical: localePath(lang),
+      languages: { en: localePath("en"), es: localePath("es"), "x-default": "/" },
     },
     openGraph: {
       title,
       description: descriptions[lang],
-      url: `/${lang}`,
+      url: localePath(lang),
       siteName: `${profile.name} · ${ui[lang].portfolio}`,
       locale: lang === "es" ? "es_PE" : "en_US",
       alternateLocale: lang === "es" ? "en_US" : "es_PE",

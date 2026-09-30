@@ -11,7 +11,7 @@ import {
   skills,
   type Project,
 } from "@/lib/content";
-import { SITE_URL } from "@/lib/site";
+import { localeUrl, SITE_URL } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -69,7 +69,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
     "@type": "ProfilePage",
     name: `${profile.name} · ${t.portfolio}`,
     headline: `${profile.name} — ${t.role}`,
-    url: `${SITE_URL}/${lang}`,
+    url: localeUrl(lang),
     inLanguage: lang,
     mainEntity: person,
   };
@@ -96,7 +96,21 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <h1 className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
             {profile.name}
           </h1>
-          <p className="mt-3 font-mono text-sm text-brand sm:text-base">{t.role}</p>
+          <p className="mt-4 text-2xl font-medium tracking-tight text-balance sm:text-4xl">
+            {t.headline.lead} <span className="text-muted-foreground">{t.headline.tail}</span>
+          </p>
+          <p className="mt-5 font-mono text-sm text-brand sm:text-base">
+            {t.role.split(" · ").map((part, i) => (
+              <span key={part} className="whitespace-nowrap">
+                {i > 0 && " · "}
+                {part}
+              </span>
+            ))}
+          </p>
+          <p className="mt-2 font-mono text-xs text-muted-foreground sm:text-sm">
+            <span className="inline-block">{t.stackLine.base}</span>{" "}
+            <span className="inline-block text-foreground">{t.stackLine.ai}</span>
+          </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
             {t.intro}
           </p>
@@ -124,7 +138,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             </div>
           </div>
 
-          <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-4">
+          <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-3">
             {t.stats.map((stat) => (
               <div key={stat.label} className="bg-background p-5">
                 <dt className="sr-only">{stat.label}</dt>

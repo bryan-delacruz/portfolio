@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Lock, Mail, MapPin } from "lucide-react";
+import { CopyEmailButton } from "@/components/copy-email-button";
 import { SiteHeader } from "@/components/site-header";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { isLocale, ui, type Locale } from "@/lib/i18n";
@@ -237,6 +238,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               <Mail className="size-4" />
               {profile.email}
             </a>
+            <CopyEmailButton email={profile.email} label={t.copyEmail} copiedLabel={t.copiedEmail} />
             <a
               href={profile.linkedin}
               target="_blank"

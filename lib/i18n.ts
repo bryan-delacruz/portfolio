@@ -43,6 +43,8 @@ export const ui = {
     privateCode: "Código privado",
     skillsTitle: "Stack",
     contactTitle: "Hablemos",
+    copyEmail: "Copiar",
+    copiedEmail: "¡Copiado!",
     contactLead:
       "Busco roles de Software Engineer full stack o frontend, en remoto o híbrido. Escríbeme y respondo rápido.",
     footer: "Hecho con Next.js y desplegado en Vercel.",
@@ -77,6 +79,8 @@ export const ui = {
     privateCode: "Private code",
     skillsTitle: "Stack",
     contactTitle: "Let's talk",
+    copyEmail: "Copy",
+    copiedEmail: "Copied!",
     contactLead:
       "I'm looking for full stack or frontend Software Engineer roles, remote or hybrid. Send me a message and I'll reply quickly.",
     footer: "Built with Next.js and deployed on Vercel.",

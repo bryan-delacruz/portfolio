@@ -1,4 +1,4 @@
-# Portfolio | Bryan De La Cruz · Software Engineer
+# Portfolio | Bryan De La Cruz Amar · Software Engineer
 
 ![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)

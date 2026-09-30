@@ -11,6 +11,7 @@ import {
   skills,
   type Project,
 } from "@/lib/content";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -28,8 +29,41 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   if (!isLocale(lang)) notFound();
   const t = ui[lang];
 
+  // Datos estructurados: página de perfil (el portafolio) cuya entidad principal es la persona,
+  // para que Google asocie el nombre completo con el sitio, el rol y los perfiles.
+  const person = {
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
+    name: profile.name,
+    alternateName: profile.shortName,
+    givenName: profile.givenName,
+    familyName: profile.familyName,
+    jobTitle: profile.jobTitle,
+    description: t.role,
+    url: SITE_URL,
+    image: `${SITE_URL}/${lang}/opengraph-image`,
+    email: `mailto:${profile.email}`,
+    address: { "@type": "PostalAddress", addressLocality: "Lima", addressCountry: "PE" },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Pontificia Universidad Católica del Perú" },
+    knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "Ecommerce", "VTEX"],
+    sameAs: [profile.linkedin, profile.github],
+  };
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: `${profile.name} · ${t.portfolio}`,
+    headline: `${profile.name} — ${t.role}`,
+    url: `${SITE_URL}/${lang}`,
+    inLanguage: lang,
+    mainEntity: person,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
       <SiteHeader lang={lang} t={t} />
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6">

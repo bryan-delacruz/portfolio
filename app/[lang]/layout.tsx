@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { isLocale, locales } from "@/lib/i18n";
+import { isLocale, locales, ui } from "@/lib/i18n";
 import { profile } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 const descriptions = {
-  es: "Software Engineer full stack en Lima. React, Next.js, TypeScript y Node.js. Ecommerce para marcas globales en 7 países de LATAM.",
-  en: "Full stack Software Engineer in Lima. React, Next.js, TypeScript and Node.js. Ecommerce for global brands across 7 LATAM countries.",
+  es: `Portafolio de ${profile.name}, ${ui.es.role} en Lima. React, Next.js, TypeScript y Node.js. Ecommerce en 7 países de LATAM.`,
+  en: `Portfolio of ${profile.name}, ${ui.en.role} in Lima. React, Next.js, TypeScript and Node.js. Ecommerce across 7 LATAM countries.`,
 };
 
 export function generateStaticParams() {
@@ -34,11 +34,14 @@ export async function generateMetadata({
   const { lang } = await params;
   if (!isLocale(lang)) return {};
 
-  const title = `${profile.name} — Software Engineer`;
+  const title = `${profile.name} — ${ui[lang].role}`;
   return {
     metadataBase: new URL(SITE_URL),
     title,
     description: descriptions[lang],
+    applicationName: profile.name,
+    authors: [{ name: profile.name, url: SITE_URL }],
+    creator: profile.name,
     alternates: {
       canonical: `/${lang}`,
       languages: { es: "/es", en: "/en" },
@@ -47,8 +50,17 @@ export async function generateMetadata({
       title,
       description: descriptions[lang],
       url: `/${lang}`,
+      siteName: `${profile.name} · ${ui[lang].portfolio}`,
       locale: lang === "es" ? "es_PE" : "en_US",
-      type: "website",
+      alternateLocale: lang === "es" ? "en_US" : "es_PE",
+      type: "profile",
+      firstName: profile.givenName,
+      lastName: profile.familyName,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: descriptions[lang],
     },
   };
 }

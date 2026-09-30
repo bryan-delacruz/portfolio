@@ -13,6 +13,7 @@ export const ui = {
   es: {
     nav: { experience: "Experiencia", projects: "Proyectos", skills: "Stack", contact: "Contacto" },
     role: "Software Engineer · Full Stack · AI-Native",
+    portfolio: "Portafolio",
     available: "Abierto a nuevas oportunidades · remoto o híbrido",
     intro:
       "Construyo aplicaciones web en producción con React, Next.js, TypeScript y Node.js, con IA integrada en mi forma de trabajar. Llevo más de 4 años desarrollando software, la mayor parte en ecommerce para marcas globales en 7 países de LATAM, y en paralelo lanzo productos propios de punta a punta.",
@@ -45,6 +46,7 @@ export const ui = {
   en: {
     nav: { experience: "Experience", projects: "Projects", skills: "Stack", contact: "Contact" },
     role: "Software Engineer · Full Stack · AI-Native",
+    portfolio: "Portfolio",
     available: "Open to new opportunities · remote or hybrid",
     intro:
       "I build production web applications with React, Next.js, TypeScript and Node.js, with AI built into the way I work. I have 4+ years in software development, mostly shipping ecommerce for global brands across 7 LATAM countries, and I launch my own products end to end on the side.",

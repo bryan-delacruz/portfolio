@@ -1,20 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
-import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { localePath, type Locale, type UI } from "@/lib/i18n";
 
 export function SiteHeader({ lang, t }: { lang: Locale; t: UI }) {
-  const { resolvedTheme, setTheme } = useTheme();
-  // false during SSR and hydration, true afterwards: the theme is only known in the browser.
-  const mounted = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-
   const other: Locale = lang === "es" ? "en" : "es";
   const links = [
     { href: "#experience", label: t.nav.experience },
@@ -47,14 +35,7 @@ export function SiteHeader({ lang, t }: { lang: Locale; t: UI }) {
           >
             {other}
           </Link>
-          <button
-            type="button"
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="grid size-8 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-            aria-label={t.toggleTheme}
-          >
-            {mounted && resolvedTheme === "light" ? <Moon className="size-4" /> : <Sun className="size-4" />}
-          </button>
+          <ThemeToggle label={t.toggleTheme} />
         </div>
       </div>
     </header>

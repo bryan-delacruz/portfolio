@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { isLocale } from "@/lib/i18n";
+import { SITE_HOST } from "@/lib/site";
 
 // Imagen que representa el portafolio al compartir el link (LinkedIn, WhatsApp, etc.).
 export const alt = "Bryan De La Cruz — Software Engineer";
@@ -41,7 +42,7 @@ export default async function OpengraphImage({
         }}
       >
         <div style={{ display: "flex", fontSize: 30, color: "rgba(250,250,249,0.7)", fontFamily: "monospace" }}>
-          portfolio-bdlc.vercel.app
+          {SITE_HOST}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>

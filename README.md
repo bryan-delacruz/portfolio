@@ -6,7 +6,7 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**Live:** [portfolio-bdlc.vercel.app](https://portfolio-bdlc.vercel.app/)
+**Live:** [bryandelacruz.dev](https://bryandelacruz.dev)
 
 My personal portfolio: experience, featured projects and stack. Bilingual (Spanish / English), light and dark theme, and fully server-rendered with the Next.js App Router.
 

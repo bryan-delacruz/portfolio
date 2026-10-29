@@ -1,4 +1,5 @@
 import type { Localized } from "./i18n";
+import type { TechName } from "./tech";
 
 export const profile = {
   name: "Bryan De La Cruz Amar",
@@ -8,9 +9,27 @@ export const profile = {
   familyName: "De La Cruz Amar",
   jobTitle: "Software Engineer",
   location: "Lima, Perú",
+  /** Para el JSON-LD (schema.org PostalAddress). */
+  address: { locality: "Lima", country: "PE" },
   email: "bryan.delacruza@gmail.com",
   linkedin: "https://www.linkedin.com/in/bryan-delacruza/",
   github: "https://github.com/bryan-delacruz",
+  /** Temas que van en knowsAbout del JSON-LD: el foco con el que quiero que Google me asocie. */
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "GraphQL",
+    "PostgreSQL",
+    "Ecommerce",
+    "VTEX IO",
+    "FastStore",
+    "Core Web Vitals",
+    "Web accessibility",
+    "Agentic engineering",
+    "Spec-Driven Development",
+  ],
   education: {
     degree: {
       es: "Bachiller en Ciencias con mención en Ingeniería Mecatrónica",
@@ -43,7 +62,7 @@ export type Job = {
   mode: Localized;
   summary?: Localized;
   highlights: Localized[];
-  stack?: string[];
+  stack?: TechName[];
 };
 
 export const experience: Job[] = [
@@ -164,7 +183,7 @@ export type Project = {
   name: string;
   tagline: Localized;
   description: Localized;
-  stack: string[];
+  stack: TechName[];
   /** Captura del demo en public/projects (1200×750, webp). */
   image: string;
   demo?: string;
@@ -236,7 +255,7 @@ export const featuredProjects: Project[] = [
 export type MiniProject = {
   name: string;
   description: Localized;
-  stack: string[];
+  stack: TechName[];
   image: string;
   demo?: string;
   repo?: string;
@@ -322,7 +341,7 @@ export const moreProjects: MiniProject[] = [
   },
 ];
 
-export const skills: { group: Localized; items: string[] }[] = [
+export const skills: { group: Localized; items: TechName[] }[] = [
   {
     group: { es: "Frontend", en: "Frontend" },
     items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "shadcn/ui", "Radix UI", "Zustand", "Redux"],

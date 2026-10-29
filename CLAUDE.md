@@ -31,7 +31,7 @@ There is no test suite. Verify changes with `npm run build`, `npm run lint` and 
 
 **Projects and stack visuals.** Each project in `lib/content.ts` has an `image` (`/projects/<slug>.webp` in `public/`, 1200×750 screenshots of the live demo). `lib/tech.ts` is the tech registry keyed by the displayed label ("Next.js 16", "Tailwind CSS"…) → official Simple Icons SVG, or a lucide icon for tech without a brand. `stack`/`skills` are typed `TechName[]`, so a new tag must be added there first (type error otherwise). `components/tech-logo.tsx` renders it with the brand color per theme unless it would vanish on that background (then `currentColor`).
 
-**Contact form.** `components/contact-form.tsx` (client, `useActionState`) → server action `app/[lang]/actions.ts` → Resend. Spam guard (`lib/contact-guard.ts`): honeypot, an HMAC-signed token fetched on mount (`getFormToken`) so the 3s minimum fill time is measured server-side, and an in-memory per-IP/global rate limit (per function instance, best effort; a Vercel Firewall rule is the strict option). Env: `RESEND_API_KEY` (without it the form shows an "unavailable" error and the mailto links remain), optional `CONTACT_FROM_EMAIL` / `CONTACT_TO_EMAIL` / `CONTACT_FORM_SECRET` (defaults to the Resend key). Without a verified domain Resend only sends from `onboarding@resend.dev` to the account owner's address.
+**Contact form.** `components/contact-form.tsx` (client, `useActionState`) → server action `app/[lang]/actions.ts` → Resend. Spam guard (`lib/contact-guard.ts`): honeypot, an HMAC-signed token fetched on mount (`getFormToken`) so the 3s minimum fill time is measured server-side, and an in-memory per-IP/global rate limit (per function instance, best effort), backed by a Vercel Firewall rule that rate-limits server-action POSTs (`next-action` header) to 10/min per IP. Note: fetching the token on page load is itself a server-action POST. Env: `RESEND_API_KEY` (without it the form shows an "unavailable" error and the mailto links remain), optional `CONTACT_FROM_EMAIL` / `CONTACT_TO_EMAIL` / `CONTACT_FORM_SECRET` (defaults to the Resend key). Without a verified domain Resend only sends from `onboarding@resend.dev` to the account owner's address.
 
 **Styling.** Tailwind v4 with tokens defined as CSS variables in `app/globals.css` (shadcn "new-york"/stone base, plus a custom `--brand` green accent → `text-brand`/`bg-brand`). Dark theme is the default via `next-themes` (`attribute="class"`, `enableSystem={false}`). Fonts: Geist and Geist Mono. Icons: `lucide-react`, plus brand icons in `components/icons.tsx`. Use `cn()` from `lib/utils.ts` for class merging.
 
@@ -40,7 +40,3 @@ There is no test suite. Verify changes with `npm run build`, `npm run lint` and 
 - Code comments are written in Spanish; match that.
 - Commits use Conventional Commits (`feat:`, `fix:`, `chore:`, `feat(seo):`), merged via PRs from `feat/*`, `fix/*`, `chore/*` branches.
 - Portfolio copy should stay consistent with the user's CV, LinkedIn profile and banner messaging.
-
-## Note on README
-
-`README.md` is partly stale: it says Next.js 15 and `middleware.ts`; the project is on Next.js 16 and uses `proxy.ts`.

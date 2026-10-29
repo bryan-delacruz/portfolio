@@ -165,6 +165,8 @@ export type Project = {
   tagline: Localized;
   description: Localized;
   stack: string[];
+  /** Captura del demo en public/projects (1200×750, webp). */
+  image: string;
   demo?: string;
   /** Sin repo = código privado */
   repo?: string;
@@ -174,6 +176,7 @@ export type Project = {
 export const featuredProjects: Project[] = [
   {
     name: "Rent Platform",
+    image: "/projects/rent-platform.webp",
     tagline: { es: "Gestión de alquileres para propietarios", en: "Rental management for landlords" },
     description: {
       es: "Contratos, cobros mensuales automáticos, pagos parciales, recibos PDF y recordatorios por WhatsApp, en español e inglés. Login con Clerk con datos aislados por propietario, 55 tests unitarios y 13 E2E con Playwright en CI. Demo con un clic.",
@@ -186,6 +189,7 @@ export const featuredProjects: Project[] = [
   },
   {
     name: "Bernie Wallet",
+    image: "/projects/bernie-wallet.webp",
     tagline: { es: "Tus gastos se anotan solos", en: "Your expenses log themselves" },
     description: {
       es: "Lee los correos de tu banco con acceso de solo lectura a Gmail, reconoce cada consumo y lo organiza por categoría. Sincronización con backoff y circuit breaker, tokens cifrados con AES-256-GCM y Row Level Security en Postgres. PWA instalable y demo con un clic.",
@@ -198,6 +202,7 @@ export const featuredProjects: Project[] = [
   },
   {
     name: "Casorio Club",
+    image: "/projects/casorio-club.webp",
     tagline: {
       es: "Tu matrimonio civil en un solo lugar",
       en: "Your civil wedding in one place",
@@ -213,6 +218,7 @@ export const featuredProjects: Project[] = [
   },
   {
     name: "The Coffee Simulator",
+    image: "/projects/the-coffee-simulator.webp",
     tagline: {
       es: "Simulador financiero para abrir un local",
       en: "Financial simulator for opening a store",
@@ -231,6 +237,7 @@ export type MiniProject = {
   name: string;
   description: Localized;
   stack: string[];
+  image: string;
   demo?: string;
   repo?: string;
 };
@@ -238,6 +245,7 @@ export type MiniProject = {
 export const moreProjects: MiniProject[] = [
   {
     name: "Teslo Shop",
+    image: "/projects/teslo-shop.webp",
     description: {
       es: "Ecommerce full stack (curso de DevTalles): catálogo con filtros, carrito, checkout con PayPal y panel de administración.",
       en: "Full stack ecommerce (DevTalles course): filtered catalog, cart, PayPal checkout and admin panel.",
@@ -248,6 +256,7 @@ export const moreProjects: MiniProject[] = [
   },
   {
     name: "Spotify Clone",
+    image: "/projects/spotify-clone.webp",
     description: {
       es: "Streaming de música con reproductor propio, favoritos, subida de canciones y suscripción Premium con Stripe.",
       en: "Music streaming with a custom player, liked songs, uploads and a Stripe Premium subscription.",
@@ -258,6 +267,7 @@ export const moreProjects: MiniProject[] = [
   },
   {
     name: "Goz Bank",
+    image: "/projects/goz-bank.webp",
     description: {
       es: "Billetera digital con pagos por código QR.",
       en: "Digital wallet with QR code payments.",
@@ -268,6 +278,7 @@ export const moreProjects: MiniProject[] = [
   },
   {
     name: "PI Food",
+    image: "/projects/pi-food.webp",
     description: {
       es: "App de recetas con filtros combinados, API propia en Express y PostgreSQL con Sequelize.",
       en: "Recipe app with combined filters, its own Express API and PostgreSQL with Sequelize.",
@@ -278,6 +289,7 @@ export const moreProjects: MiniProject[] = [
   },
   {
     name: "Rick and Morty",
+    image: "/projects/rick-and-morty.webp",
     description: {
       es: "Explorador de personajes sobre la API de Rick and Morty.",
       en: "Character explorer built on the Rick and Morty API.",
@@ -288,6 +300,7 @@ export const moreProjects: MiniProject[] = [
   },
   {
     name: "Weather App",
+    image: "/projects/weather-app.webp",
     description: {
       es: "Clima por ciudad con la API de OpenWeather.",
       en: "Weather by city with the OpenWeather API.",
@@ -298,6 +311,7 @@ export const moreProjects: MiniProject[] = [
   },
   {
     name: "DigitalOcean Landing",
+    image: "/projects/digitalocean-landing.webp",
     description: {
       es: "Réplica responsive de la landing de DigitalOcean.",
       en: "Responsive replica of the DigitalOcean landing page.",

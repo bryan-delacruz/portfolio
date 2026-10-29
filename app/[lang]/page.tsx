@@ -1,8 +1,11 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Lock, Mail, MapPin } from "lucide-react";
+import { ContactForm } from "@/components/contact-form";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { SiteHeader } from "@/components/site-header";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { TechLogo } from "@/components/tech-logo";
 import { isLocale, ui, type Locale } from "@/lib/i18n";
 import {
   experience,
@@ -196,11 +199,20 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             {moreProjects.map((project) => (
               <li
                 key={project.name}
-                className="flex flex-col gap-2 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+                className="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
               >
-                <div className="min-w-0">
-                  <p className="font-medium">{project.name}</p>
-                  <p className="text-sm text-muted-foreground">{project.description[lang]}</p>
+                <div className="flex min-w-0 items-center gap-4">
+                  <Thumbnail
+                    src={project.image}
+                    alt={`${t.previewAlt} ${project.name}`}
+                    href={project.demo}
+                    sizes="112px"
+                    className="w-24 shrink-0 rounded-md sm:w-28"
+                  />
+                  <div className="min-w-0">
+                    <p className="font-medium">{project.name}</p>
+                    <p className="text-sm text-muted-foreground">{project.description[lang]}</p>
+                  </div>
                 </div>
                 <div className="flex shrink-0 items-center gap-4 font-mono text-xs">
                   <span className="text-muted-foreground">{project.stack.join(" · ")}</span>
@@ -262,10 +274,15 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
         {/* Contact */}
         <Section id="contact" index="05" title={t.contactTitle} lead={t.contactLead}>
-          <div className="flex flex-wrap gap-3">
+          <div className="max-w-2xl">
+            <ContactForm t={t.contactForm} />
+          </div>
+
+          <h3 className="mt-12 font-mono text-sm text-muted-foreground">{t.contactAlt}</h3>
+          <div className="mt-4 flex flex-wrap gap-3">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex h-11 items-center gap-2 rounded-md bg-foreground px-5 text-sm font-medium text-background transition-opacity hover:opacity-90"
+              className="inline-flex h-11 items-center gap-2 rounded-md border border-border px-5 text-sm font-medium transition-colors hover:bg-accent"
             >
               <Mail className="size-4" />
               {profile.email}
@@ -332,28 +349,83 @@ function Section({
 function ProjectCard({ project, lang }: { project: Project; lang: Locale }) {
   const t = ui[lang];
   return (
-    <article className="group flex flex-col rounded-lg border border-border bg-card/40 p-6 transition-colors hover:border-brand/50">
-      <div className="flex items-baseline justify-between gap-4">
-        <h3 className="text-lg font-medium">{project.name}</h3>
-        <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+    <article className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card/40 transition-colors hover:border-brand/50">
+      <div className="border-b border-border bg-secondary/40 px-4 pt-4">
+        {/* Marco de ventana de navegador alrededor de la captura del demo */}
+        <div className="overflow-hidden rounded-t-md border border-b-0 border-border bg-background shadow-sm">
+          <div className="flex items-center gap-1.5 border-b border-border px-3 py-2" aria-hidden>
+            <span className="size-2 rounded-full bg-muted-foreground/30" />
+            <span className="size-2 rounded-full bg-muted-foreground/30" />
+            <span className="size-2 rounded-full bg-muted-foreground/30" />
+            {project.demo && (
+              <span className="ml-2 truncate font-mono text-[10px] text-muted-foreground">
+                {new URL(project.demo).host}
+              </span>
+            )}
+          </div>
+          <Thumbnail
+            src={project.image}
+            alt={`${t.previewAlt} ${project.name}`}
+            href={project.demo}
+            sizes="(min-width: 768px) 480px, 100vw"
+          />
+        </div>
       </div>
-      <p className="mt-1 text-sm text-brand">{project.tagline[lang]}</p>
-      <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground text-pretty">
-        {project.description[lang]}
-      </p>
-      <Tags items={project.stack} className="mt-5" />
-      <div className="mt-6 flex items-center gap-5 font-mono text-xs">
-        {project.demo && <TextLink href={project.demo}>{t.demo}</TextLink>}
-        {project.repo ? (
-          <TextLink href={project.repo}>{t.code}</TextLink>
-        ) : (
-          <span className="inline-flex items-center gap-1 text-muted-foreground">
-            <Lock className="size-3" />
-            {t.privateCode}
-          </span>
-        )}
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="text-lg font-medium">{project.name}</h3>
+          <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+        </div>
+        <p className="mt-1 text-sm text-brand">{project.tagline[lang]}</p>
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground text-pretty">
+          {project.description[lang]}
+        </p>
+        <Tags items={project.stack} className="mt-5" />
+        <div className="mt-6 flex items-center gap-5 font-mono text-xs">
+          {project.demo && <TextLink href={project.demo}>{t.demo}</TextLink>}
+          {project.repo ? (
+            <TextLink href={project.repo}>{t.code}</TextLink>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-muted-foreground">
+              <Lock className="size-3" />
+              {t.privateCode}
+            </span>
+          )}
+        </div>
       </div>
     </article>
+  );
+}
+
+function Thumbnail({
+  src,
+  alt,
+  href,
+  sizes,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  href?: string;
+  sizes: string;
+  className?: string;
+}) {
+  const image = (
+    <div className={`relative aspect-[16/10] overflow-hidden bg-muted ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
+      />
+    </div>
+  );
+  if (!href) return image;
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" tabIndex={-1} className="group block">
+      {image}
+    </a>
   );
 }
 
@@ -363,8 +435,9 @@ function Tags({ items, className = "" }: { items: string[]; className?: string }
       {items.map((item) => (
         <li
           key={item}
-          className="rounded border border-border bg-secondary/50 px-2 py-0.5 font-mono text-[11px] text-secondary-foreground"
+          className="inline-flex items-center gap-1.5 rounded border border-border bg-secondary/50 px-2 py-0.5 font-mono text-[11px] text-secondary-foreground"
         >
+          <TechLogo name={item} className="size-3" />
           {item}
         </li>
       ))}

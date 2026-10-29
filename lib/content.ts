@@ -236,8 +236,8 @@ export const featuredProjects: Project[] = [
     year: 2026,
   },
   {
-    name: "The Coffee Simulator",
-    image: "/projects/the-coffee-simulator.webp",
+    name: "Cafetería Simulador",
+    image: "/projects/cafeteria-simulator.webp",
     tagline: {
       es: "Simulador financiero para abrir un local",
       en: "Financial simulator for opening a store",
@@ -247,7 +247,7 @@ export const featuredProjects: Project[] = [
       en: "Decides whether to sign a franchise location. Replicates the brand's spreadsheet cell by cell and adds a corrected mode with VAT, income tax and asset recovery at closing.",
     },
     stack: ["Next.js 16", "TypeScript", "Base UI", "shadcn/ui"],
-    demo: "https://the-coffee-simulator.vercel.app",
+    demo: "https://cafeteria-simulator.vercel.app",
     year: 2026,
   },
 ];

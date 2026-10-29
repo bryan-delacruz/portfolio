@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import { isLocale, localePath, locales, ui } from "@/lib/i18n";
 import { profile } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
+import { RootBody } from "@/components/root-body";
 import "../globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const descriptions = {
   en: `Portfolio of ${profile.name}, ${ui.en.role}. I ship production web apps end to end with React, Next.js, TypeScript, Node.js and AI agents.`,
@@ -77,11 +66,7 @@ export default async function LangLayout({
 
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-      </body>
+      <RootBody>{children}</RootBody>
     </html>
   );
 }

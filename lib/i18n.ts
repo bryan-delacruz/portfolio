@@ -62,6 +62,7 @@ export const ui = {
         invalid: "Revisa los campos: nombre, un email válido y un mensaje de al menos 10 caracteres.",
         unavailable: "El formulario no está disponible ahora. Escríbeme directo al correo de abajo.",
         failed: "No se pudo enviar. Inténtalo de nuevo o escríbeme directo al correo de abajo.",
+        rateLimited: "Demasiados mensajes seguidos. Espera unos minutos o escríbeme directo al correo de abajo.",
       },
     },
     contactAlt: "O escríbeme directo",
@@ -69,6 +70,13 @@ export const ui = {
     footer: "Hecho con Next.js y desplegado en Vercel.",
     switchLang: "English",
     toggleTheme: "Cambiar tema",
+    notFound: {
+      title: "Página no encontrada",
+      body: "La página que buscas no existe o se movió.",
+      /** {s} = segundos que faltan */
+      redirect: "Te llevo a la página de inicio en {s}s…",
+      cta: "Ir al inicio",
+    },
   },
   en: {
     nav: { experience: "Experience", projects: "Projects", skills: "Stack", education: "Education", contact: "Contact" },
@@ -117,6 +125,7 @@ export const ui = {
         invalid: "Check the fields: a name, a valid email and a message of at least 10 characters.",
         unavailable: "The form isn't available right now. Email me directly below.",
         failed: "Couldn't send it. Try again or email me directly below.",
+        rateLimited: "Too many messages in a row. Wait a few minutes or email me directly below.",
       },
     },
     contactAlt: "Or email me directly",
@@ -124,6 +133,13 @@ export const ui = {
     footer: "Built with Next.js and deployed on Vercel.",
     switchLang: "Español",
     toggleTheme: "Toggle theme",
+    notFound: {
+      title: "Page not found",
+      body: "The page you're looking for doesn't exist or was moved.",
+      /** {s} = seconds left */
+      redirect: "Redirecting to the home page in {s}s…",
+      cta: "Go home now",
+    },
   },
 } as const;
 

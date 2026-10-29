@@ -1,37 +1,25 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { localePath, type Locale } from "@/lib/i18n";
+import { defaultLocale, isLocale, localePath, ui, type Locale } from "@/lib/i18n";
 
 const SECONDS = 5;
 
-const copy = {
-  en: {
-    title: "Page not found",
-    body: "The page you're looking for doesn't exist or was moved.",
-    redirect: (s: number) => `Redirecting to the home page in ${s}s…`,
-    cta: "Go home now",
-  },
-  es: {
-    title: "Página no encontrada",
-    body: "La página que buscas no existe o se movió.",
-    redirect: (s: number) => `Te llevo a la página de inicio en ${s}s…`,
-    cta: "Ir al inicio",
-  },
-} satisfies Record<Locale, unknown>;
-
-// El idioma sale de la URL: /es/... en español, todo lo demás en inglés (idioma por defecto).
+// El idioma sale del primer segmento de la URL (/es/... → es); si no es un idioma válido, el idioma por defecto.
 function useLocaleFromPath(): Locale {
   return useSyncExternalStore(
     () => () => {},
-    () => (/^\/es(\/|$)/.test(window.location.pathname) ? "es" : "en"),
-    () => "en",
+    () => {
+      const segment = window.location.pathname.split("/")[1] ?? "";
+      return isLocale(segment) ? segment : defaultLocale;
+    },
+    () => defaultLocale,
   );
 }
 
 export function NotFoundRedirect() {
   const lang = useLocaleFromPath();
-  const t = copy[lang];
+  const t = ui[lang].notFound;
   const home = localePath(lang);
   const [seconds, setSeconds] = useState(SECONDS);
 
@@ -57,7 +45,7 @@ export function NotFoundRedirect() {
       <h1 className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-6xl">{t.title}</h1>
       <p className="mt-4 max-w-xl text-lg text-muted-foreground text-pretty">{t.body}</p>
       <p className="mt-8 font-mono text-sm text-brand" aria-live="polite">
-        {t.redirect(seconds)}
+        {t.redirect.replace("{s}", String(seconds))}
       </p>
       <a
         href={home}

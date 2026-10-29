@@ -1,8 +1,8 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { Check, Loader2, Send } from "lucide-react";
-import { sendContact, type ContactState } from "@/app/[lang]/actions";
+import { getFormToken, sendContact, type ContactState } from "@/app/[lang]/actions";
 import type { UI } from "@/lib/i18n";
 
 const field =
@@ -10,8 +10,12 @@ const field =
 
 export function ContactForm({ t }: { t: UI["contactForm"] }) {
   const [state, action, pending] = useActionState<ContactState, FormData>(sendContact, { status: "idle" });
-  // Se fija al montar: el servidor rechaza envíos hechos demasiado rápido (bots).
-  const [startedAt] = useState(() => Date.now());
+  // Token firmado por el servidor al montar: con él mide el tiempo de llenado y descarta bots.
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    getFormToken().then(setToken, () => {});
+  }, []);
 
   if (state.status === "success") {
     return (
@@ -51,7 +55,7 @@ export function ContactForm({ t }: { t: UI["contactForm"] }) {
 
       {/* Honeypot: invisible para personas, los bots lo llenan. */}
       <input name="company" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
-      <input type="hidden" name="startedAt" value={startedAt} />
+      <input type="hidden" name="token" value={token} />
 
       <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
         <button

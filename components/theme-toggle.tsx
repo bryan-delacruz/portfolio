@@ -6,7 +6,7 @@ import { Moon, Sun } from "lucide-react";
 
 export function ThemeToggle({ label }: { label: string }) {
   const { resolvedTheme, setTheme } = useTheme();
-  // false during SSR and hydration, true afterwards: the theme is only known in the browser.
+  // false en SSR e hidratación, true después: el tema solo se conoce en el navegador.
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,

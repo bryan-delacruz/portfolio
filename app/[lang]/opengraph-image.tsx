@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { brandColors } from "@/lib/brand";
 import { profile } from "@/lib/content";
 import { defaultLocale, isLocale, ui } from "@/lib/i18n";
 import { SITE_HOST } from "@/lib/site";
@@ -8,13 +9,6 @@ import { SITE_HOST } from "@/lib/site";
 export const alt = `${profile.name} — ${ui.en.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-
-const colors = {
-  background: "#090706",
-  foreground: "#F9F9F8",
-  muted: "#A6A09B",
-  brand: "#4ADD8C",
-};
 
 export default async function OpengraphImage({
   params,
@@ -34,12 +28,12 @@ export default async function OpengraphImage({
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          color: colors.foreground,
+          color: brandColors.foreground,
           fontFamily: "sans-serif",
-          background: colors.background,
+          background: brandColors.background,
         }}
       >
-        <div style={{ display: "flex", fontSize: 26, color: colors.muted, fontFamily: "monospace" }}>
+        <div style={{ display: "flex", fontSize: 26, color: brandColors.muted, fontFamily: "monospace" }}>
           {`${SITE_HOST} · ${t.portfolio}`}
         </div>
 
@@ -49,15 +43,15 @@ export default async function OpengraphImage({
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", marginTop: 18, fontSize: 40, lineHeight: 1.2 }}>
             <span>{t.headline.lead}</span>
-            <span style={{ marginLeft: 12, color: colors.muted }}>{t.headline.tail}</span>
+            <span style={{ marginLeft: 12, color: brandColors.muted }}>{t.headline.tail}</span>
           </div>
-          <div style={{ display: "flex", marginTop: 32, fontSize: 30, color: colors.brand, fontFamily: "monospace" }}>
+          <div style={{ display: "flex", marginTop: 32, fontSize: 30, color: brandColors.brand, fontFamily: "monospace" }}>
             {t.role}
           </div>
         </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", fontSize: 24, fontFamily: "monospace" }}>
-          <span style={{ color: colors.muted }}>{t.stackLine.base}</span>
+          <span style={{ color: brandColors.muted }}>{t.stackLine.base}</span>
           <span style={{ marginLeft: 12 }}>{t.stackLine.ai}</span>
         </div>
       </div>

@@ -216,7 +216,6 @@ export const featuredProjects: Project[] = [
     },
     stack: ["Next.js 16", "React 19", "Supabase", "Gmail API", "Recharts", "shadcn/ui"],
     demo: "https://bernie-wallet.vercel.app",
-    repo: "https://github.com/bryan-delacruz/bernie-wallet",
     year: 2026,
   },
   {

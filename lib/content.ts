@@ -203,7 +203,7 @@ export const featuredProjects: Project[] = [
     },
     stack: ["Next.js 16", "TypeScript", "Clerk", "Prisma", "Neon Postgres", "Zod", "Playwright", "Vitest"],
     demo: "https://rent-platform-bdlc.vercel.app",
-    repo: "https://github.com/bryan-delacruz/rent-platform",
+    repo: "https://github.com/bryan-delacruz/rentea",
     year: 2026,
   },
   {
@@ -283,61 +283,6 @@ export const moreProjects: MiniProject[] = [
     stack: ["Next.js", "Supabase", "Stripe"],
     demo: "https://spotify-app-bdlc.vercel.app/",
     repo: "https://github.com/bryan-delacruz/next-spotify-app",
-  },
-  {
-    name: "Goz Bank",
-    image: "/projects/goz-bank.webp",
-    description: {
-      es: "Billetera digital con pagos por código QR.",
-      en: "Digital wallet with QR code payments.",
-    },
-    stack: ["React", "Vite", "Tailwind"],
-    demo: "https://goz-bank.vercel.app",
-    repo: "https://github.com/bryan-delacruz/goz-bank",
-  },
-  {
-    name: "PI Food",
-    image: "/projects/pi-food.webp",
-    description: {
-      es: "App de recetas con filtros combinados, API propia en Express y PostgreSQL con Sequelize.",
-      en: "Recipe app with combined filters, its own Express API and PostgreSQL with Sequelize.",
-    },
-    stack: ["React", "Redux", "Express", "PostgreSQL"],
-    demo: "https://pi-food-project-bdlc.vercel.app/",
-    repo: "https://github.com/bryan-delacruz/React-PI-Food-Project",
-  },
-  {
-    name: "Rick and Morty",
-    image: "/projects/rick-and-morty.webp",
-    description: {
-      es: "Explorador de personajes sobre la API de Rick and Morty.",
-      en: "Character explorer built on the Rick and Morty API.",
-    },
-    stack: ["React", "Redux"],
-    demo: "https://project-rick-and-morty-bdlc.vercel.app/",
-    repo: "https://github.com/bryan-delacruz/React-Project-Rick-and-Morty",
-  },
-  {
-    name: "Weather App",
-    image: "/projects/weather-app.webp",
-    description: {
-      es: "Clima por ciudad con la API de OpenWeather.",
-      en: "Weather by city with the OpenWeather API.",
-    },
-    stack: ["React"],
-    demo: "https://weather-project-bdlc.vercel.app/",
-    repo: "https://github.com/bryan-delacruz/React-Weather-App",
-  },
-  {
-    name: "DigitalOcean Landing",
-    image: "/projects/digitalocean-landing.webp",
-    description: {
-      es: "Réplica responsive de la landing de DigitalOcean.",
-      en: "Responsive replica of the DigitalOcean landing page.",
-    },
-    stack: ["React", "Tailwind"],
-    demo: "https://digitalocean-web-tailwind-react-bdlc.vercel.app/",
-    repo: "https://github.com/bryan-delacruz/digitalocean-website-tailwind_react",
   },
 ];
 
